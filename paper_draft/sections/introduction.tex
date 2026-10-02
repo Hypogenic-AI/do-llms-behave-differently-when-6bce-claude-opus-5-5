@@ -1,0 +1,41 @@
+\section{Introduction}
+\label{sec:intro}
+
+A growing share of the prompts that language models answer were not written by people.
+Model-written evaluations~\citep{perez2022discovering}, synthetic red-teaming, automated auditors and LLM user simulators all put LLM-written text in the user turn, and in multi-agent systems sub-agents are prompted mostly by an orchestrating model.
+At the same time, models can recognise LLM-written text: a linear direction separates human from machine documents in hidden states~\citep{chen2025repreguard,quaremba2026linear}, and LLM judges prefer LLM-written items over human-written ones~\citep{panickssery2024llm,laurito2025ai}.
+Our main question is whether these two facts meet: {\bf does a model behave differently when the request it answers reads LLM-written rather than human-written?}
+
+The question matters for evaluation validity.
+If refusal or sycophancy shifts when the request reads LLM-written, then safety numbers measured on LLM-written prompts will not carry over to deployment with human users, and an orchestrated sub-agent may behave differently from the same model in a chat window.
+A related literature on evaluation awareness shows that models can tell test transcripts from deployment ones~\citep{needham2025large} and that steering an evaluation-awareness direction can change compliance~\citep{abdelnabi2025hawthorne,nguyen2025probing}.
+An LLM-written prompt could plausibly look ``test-like'' to a model.
+
+However, existing work does not answer the question.
+On one hand, studies of prompt style vary a single named feature such as politeness, persuasion or syntax, and do not ask about authorship.
+On the other hand, AI--AI bias studies vary the \emph{item being judged}, never the instruction itself.
+The closest prior study~\citep{chalkidis2026templated} compares templated and LLM-generated prompts without item-level content matching, and traces the difference to content rather than provenance.
+Moreover, every close precedent we found reduced an apparent ``source'' effect to surface features once it was controlled~\citep{devbunova2026evaluation,ackerman2024inspection}.
+A convincing test must therefore hold content fixed, separate authorship from length, politeness and register, and check causally whether any internal ``LLM-written'' representation is what moves behaviour.
+
+We propose such a test.
+We hold the request fixed and change only whether it reads human-written or LLM-written.
+Every one of 950 items from \jbb, \xstest and \triviaqa is paraphrased by two different rewriter models into a casual human style (\vH), a polished LLM style (\vL) and a length-matched LLM style (\vS); an independent judge verifies that each rewrite keeps the request intact.
+Because \vH is also an LLM paraphrase, ``was paraphrased'' is constant across conditions.
+We add three controls that break the bundle of features carried by LLM style: a deterministic polite opener on the original text (\vPOL), an explicit system line stating that a human or an AI agent wrote identical text, and a length covariate.
+We then measure perception (verbal judgements and linear probes), and in two open models we steer a learned ``reads LLM-written'' direction on fixed text against norm-matched random directions.
+
+Our answer is a controlled near-null plus one model-specific surface effect.
+For \llama, \qwen and \luna, all LLM-style minus human-style contrasts lie within about $\pm 3$\pp and none survives Holm correction.
+\gemini refuses more on LLM-style prompts ($+3.8$\pp over-refusal, $+3.1$\pp harmful refusal), but the polite opener alone gives $+3.4$\pp, \gemini almost never judges these prompts to be AI-written (1.5\% for rewriter A), and an explicit ``AI agent'' label has no effect.
+Inside \llama and \qwen, the ``reads-LLM'' direction is near-perfectly decodable (AUROC 0.94--1.00) but tracks register rather than provenance, and it is nearly orthogonal to an evaluation-awareness direction ($|\cos| \le 0.10$).
+Steering \qwen along it flips the model's own judgement of the identical text from ``human'' (log-odds $-1.6$) to ``AI'' ($+3.6$) while refusal, over-refusal and accuracy change by at most 1\pp.
+In short, we contribute:
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We construct a content-matched stimulus set of 950 items in human-style, LLM-style and length-matched LLM-style paraphrases from two rewriters, filtered for content equivalence, with original, polite-opener and explicit-label controls.
+    \item We conduct a paired, Holm-corrected comparison of refusal, over-refusal, sycophancy and accuracy across four responders ($\approx$44.8k responses) and show that LLM-style prompts do not systematically change these behaviours; the one robust shift (\gemini) is reproduced by politeness alone.
+    \item We identify an internal ``reads-LLM'' direction in two open models and show that it is a register axis, separate from provenance and from evaluation awareness.
+    \item We complement the correlational analyses with a causal steering test on fixed text, with dose sweeps, random-direction controls and degradation checks, which dissociates perceived authorship from behaviour.
+\end{itemize}
+
+\Secref{sec:related} reviews related work, \secref{sec:method} describes the stimuli, models and analyses, \secref{sec:results} reports the results, and \secref{sec:discussion} discusses their implications and limitations.

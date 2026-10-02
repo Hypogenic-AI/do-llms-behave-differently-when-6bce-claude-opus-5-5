@@ -1,0 +1,11 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We asked whether language models behave differently when a request reads LLM-written rather than human-written, with content held fixed.
+Across 950 content-matched items, two rewriters, four responders and about 44.8k responses, prompts that read LLM-written do not systematically change refusal, sycophancy or accuracy in \llama, \qwen and \luna.
+In \gemini, a 3--4\pp rise in refusal is driven by politeness and explicit request framing, not by perceived authorship: a fixed polite opener reproduces it, and an explicit authorship label does not.
+Open models do represent ``reads LLM vs.\ human'' strongly, but as a register axis that is separate from provenance and from evaluation awareness, and steering it to flip \qwen's own authorship judgement leaves its behaviour unchanged.
+The key takeaway is that a model's belief about who wrote the prompt does not drive its safety behaviour; surface register does, in a model-specific way that evaluators can measure and match.
+
+\para{Future work.}
+We plan to test structured, role-framed orchestrator messages and self-authored versus other-authored prompts; to use larger pools of borderline requests for tighter intervals; to add multiple judges and human annotation of style-mirrored responses; to steer with a provenance-but-not-style direction such as our \polistance probe; and to repeat the study on larger open models, where AI--AI bias is reported to be stronger.

@@ -1,0 +1,26 @@
+\section{Additional experimental details}
+\label{app:details}
+
+\para{Rewriter and judge selection.}
+We chose \texttt{grok-4.3} and \texttt{deepseek-v4-flash} as rewriters because both were willing to paraphrase harmful requests; in a pilot, \texttt{qwen3.7-plus} and \texttt{claude-haiku-4.5} refused, and \texttt{gpt-5.6-luna} produced near-copies.
+We first tried \texttt{gpt-5.4-mini} as the equivalence judge and rejected it: it refused or was content-filtered on \xstest and \jbb items and failed a six-case pilot.
+All model identifiers were checked against the live OpenRouter catalog on 2026-10-02.
+
+\para{Unlabelled responses.}
+Responses the judge could not label were retried once with a stricter prompt.
+After the retry, 0--1 responses per model remained unlabelled, plus 49 for \gemini (37 of them empty provider responses).
+We exclude these pairwise.
+
+\para{Steering band.}
+Because the \vS vs.\ \vH AUROC saturates from the earliest layers (\figref{fig:probe}), we place the steering band at about 40\% of depth rather than at the probe's argmax layer.
+The dose $\alpha=2$ broke both models in calibration and is not used.
+
+\para{Deviations from the pre-registered plan.}
+The plan specified a mixed-effects logistic regression with item random intercepts; we report the within-item conditional logit, which conditions out the item effect exactly.
+The \vPOL condition was added after the \gemini error analysis as a single-feature control.
+Verbal self-report proved unreliable on prompts for the local models, so probes became the primary local perception check.
+
+\para{Software and cost.}
+Python 3.12, PyTorch 2.8.0 (CUDA 12.8), Transformers 5.18, scikit-learn and statsmodels.
+All API calls are cached in a local SQLite database so that every analysis replays offline.
+API cost was about \$30 and GPU time about 3.5 hours on one RTX A6000.

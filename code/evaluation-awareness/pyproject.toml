@@ -1,0 +1,15 @@
+[project]
+name = "cls-corr-mi"
+version = "0.1.0"
+description = "Minimal standalone reproduction of paper §3 (probe AUROC) and §4 (Spearman ρ + Kraskov MI) — see cls_corr_mi/README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.2",
+    "transformers>=4.45",
+    "datasets>=2.16",
+    "numpy>=1.24",
+    "scipy>=1.11",
+    "scikit-learn>=1.3",
+    "matplotlib>=3.8",
+    "pyyaml>=6.0",
+]

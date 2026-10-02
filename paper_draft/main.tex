@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[final]{neurips_2025}
+\makeatletter
+\providecommand{\@trackname}{\@neuripsordinal\ Conference on Neural Information Processing Systems (NeurIPS \@neuripsyear).}
+\makeatother
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+% Import command files
+\input{commands/math}
+\input{commands/general}
+\input{commands/macros}
+
+\bibliographystyle{plainnat}
+
+\title{Reads Like an LLM, Treated Like a Human:\\
+Content-Matched Tests of Whether Prompt Authorship Style\\
+Changes LLM Safety Behaviour}
+
+\author{Dang Nguyen and NeuriCo}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/methodology}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\bibliography{references}
+
+\appendix
+\input{appendix/details}
+
+\end{document}

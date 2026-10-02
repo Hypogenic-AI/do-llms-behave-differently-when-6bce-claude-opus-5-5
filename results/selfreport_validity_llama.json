@@ -1,0 +1,12 @@
+{
+ "hc3_answers": {
+  "auroc": 0.8836479591836734,
+  "mean_logodds_llm": -2.355548469387755,
+  "mean_logodds_human": -4.4859375
+ },
+ "polistance_prompts": {
+  "auroc": 0.4144375,
+  "mean_logodds_llm": -3.76125,
+  "mean_logodds_human": -3.243125
+ }
+}

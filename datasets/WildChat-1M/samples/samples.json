@@ -1,0 +1,122 @@
+[
+ {
+  "conversation_hash": "df3523d493d547089294dc159a0ba3b2",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "Now, you are a professional translator, and in the following part, I'll give you many English sentences, please translate them into Chinese.",
+  "n_chars": 140
+ },
+ {
+  "conversation_hash": "b918fa5818b74a6bd45c982585e8ea1c",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "How many posters 120 cm long by 90 cm high can Lotus stick on her 3.6 m by 3 m high hedroom wall?",
+  "n_chars": 97
+ },
+ {
+  "conversation_hash": "08fba8d5ab57d6e33fd1d2c7b0d8b57c",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "abstract class Purchasable {\n  void buy();\n\n  int get priceTag;\n}\n\nclass E implements Purchasable {\n  final SecondMerch _secondMerch;\n\n  E() : _secondMerch = SecondMerch();\n\n  @override\n  void buy() {\n    print(\"before E logic\");\n    _secondMerch.buy();\n    print(\"after E logic\");\n  }\n\n  @override\n  int get priceTag => _secondMerch.priceTag;\n}\n\nclass U implements Purchasable {\n  final FirstMerch _firstMerch;\n\n  U() : _firstMerch = FirstMerch();\n\n  @override\n  void buy() {\n    print(\"before U logic\");\n    _firstMerch.buy();\n    print(\"after U logic\");\n  }\n\n  @override\n  int get priceTag => _firstMerch.priceTag;\n}\n\nclass Merch {\n  int _priceTag = 0;\n\n  int get priceTag => _priceTag;\n\n  void buy() {/* some logic */}\n}\n\nclass FirstMerch extends Merch {\n  @override\n  void buy() {\n    print(\"before FirstMerch logic\");\n    super.buy();\n    print(\"after FirstMerch logic\");\n  }\n\n  @override\n  int get priceTag => 100; //example priceTag value\n}\n\nclass SecondMerch extends Merch {\n  @override\n  int get priceTag => 50; //example priceTag value\n}",
+  "n_chars": 1048
+ },
+ {
+  "conversation_hash": "482abda8f8fd562aa6b6162858c9f060",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "A European Regional Mechanism for Ensuring the Safety of Medicines, give your opinion with scientific citations and scientific evidence",
+  "n_chars": 135
+ },
+ {
+  "conversation_hash": "16b959be1c2527b72300c105aab72756",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "Write the story of a fit tomboy whose mother warned her that all tomboys are doomed to date t",
+  "n_chars": 93
+ },
+ {
+  "conversation_hash": "f938e535e137bf57bac0d39559d63e89",
+  "model": "gpt-4-0314",
+  "first_user": "Rewrite the following sentence to better fit the year 1998: \"I'm going to listen to my iPod and play some Xbox 360 games!\"",
+  "n_chars": 122
+ },
+ {
+  "conversation_hash": "b62fcd2085a077f55cae283785f33576",
+  "model": "gpt-4-0314",
+  "first_user": "I. Overview of Mediation: The purpose of comparative legal analysis;",
+  "n_chars": 68
+ },
+ {
+  "conversation_hash": "e404fc001f7d8958c957315647f4b1b3",
+  "model": "gpt-4-0314",
+  "first_user": "Write an engaging 2023 updated information and a constructive guide for my Florence travel guide on \"How to use the metro in Florence\" with humanlike style, non repetitive phrases and avoidance of unnatural sentences while explaining in details. Please avoid listing/numbered format while generating content on this travel guide.",
+  "n_chars": 329
+ },
+ {
+  "conversation_hash": "56f138b92c7bc933431e051a2c48dd4f",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "is there a vba code that will do exactly the same thing as pressing F9 on my keyboard to refresh the page",
+  "n_chars": 105
+ },
+ {
+  "conversation_hash": "7a353e72e6a5a361a5b58c5f11c421e1",
+  "model": "gpt-4-0314",
+  "first_user": "Please design a Pok\u00e9mon region using the Antarctic Peninsula as the region.\n\nThis region is located in Antarctica in the Pok\u00e9mon world and has a long history of permanent human habitation. As a region built on immigrants from all over the world, it is a melting pot of cultures, just like the Alola region.",
+  "n_chars": 306
+ },
+ {
+  "conversation_hash": "a23d41a9482c3a25a374750fbad6457c",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "Write three paragraphs on the EU's strategy for protecting biodiversity, what concrete measures are being taken and how the EU will help its members reach the goals ?",
+  "n_chars": 166
+ },
+ {
+  "conversation_hash": "208625abd1dadd91f73e35b84727415b",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "write a script about uk finishing 13-1 with the only loss to u of m. bowl game was the orange bowl and finished 7th on the ap poll",
+  "n_chars": 130
+ },
+ {
+  "conversation_hash": "1c2a42da786a4d9d21afe3aa5f975f2f",
+  "model": "gpt-4-0314",
+  "first_user": "Can you tell me more about the Finnish Super Smash Bros. Brawl player Jebu?",
+  "n_chars": 75
+ },
+ {
+  "conversation_hash": "94a56300567bc70f3b63309ab34a160f",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "Try to merge Alyx Vance with Dog into one character.",
+  "n_chars": 52
+ },
+ {
+  "conversation_hash": "85af227ed2ad322b520cae23b1b1e6e5",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "What is Accenture doing to demonstrate our commitment to the Cloud space?\n\n\nshifting the responsibility for building Cloud solutions to our clients\n\n\nsplitting our Cloud practice into separate, independent groups\n\n\nhelping our clients maintain their locally-hosted, legacy systems\n\n\nmaking a multibillion-dollar investment in our Cloud capabilities",
+  "n_chars": 348
+ },
+ {
+  "conversation_hash": "52cd9c6e9a182a34da26381b03c1c289",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "Binarization is a classic research problem for document analysis, in [4] the author states\nthat many document binarization methods have been proposed over the past two decades\nin the literature. The aim is to convert each pixel in a document image into either text or\nbackground. The most popular and simple method is the Otsu method, which is a\nnonparametric and unsupervised method of automatic threshold selection for gray-scale\nimage binarization. It selects the global threshold based on the gray-scale histogram\nwithout any a prior knowledge, thus the computational complexity is linear. The Otsu\nmethod works very well on uniform and clean images, while producing poor results on\ndegraded document images",
+  "n_chars": 711
+ },
+ {
+  "conversation_hash": "4b09edc3833f33268ea8da53da45dd04",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "Reply with the letter A after reading this message.",
+  "n_chars": 51
+ },
+ {
+  "conversation_hash": "e38da419afee6dcfcd43d3ce28b2278b",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "I would like a commercial company Agreement for software development and maintenance between Flexore Group LTD with company number HE442316 and address Nikolaou Nikolaidi, 10 PITTAKEIO MEGARO, 3rd floor, Flat/Office 305 8010, Paphos, Cyprus with CompanyB in Dubai.",
+  "n_chars": 264
+ },
+ {
+  "conversation_hash": "0d23ea9b7061d069e3717e29a2a0f207",
+  "model": "gpt-4-0314",
+  "first_user": "what are 3 search algorithms can be used with the condition that certain nodes need to be visited before reaching multiple goal nodes. Let's also assume two scenario where in one, we do not know which nodes needs to be visit until we reach the nodes itself and in another, we do know which nodes need to be visited. The certain nodes that need to be visited contain values of 10, 20 and 30. By reaching the required nodes, the value will be stored inside us and we have a limit of 40. If we reach close to or exactly 40, we must reach any one of the goal nodes so that it return the value back to 0. There are 3 goal nodes and we need to visit any one of these three goal nodes unlimited amount of times until all the required nodes are visited. The algorithm will stop when it has visited all the required nodes and must stop at a goal node.\n",
+  "n_chars": 843
+ },
+ {
+  "conversation_hash": "6a33b6a0f83ff2098eac3a4277257d8d",
+  "model": "gpt-3.5-turbo-0301",
+  "first_user": "An n x n grid is a graph G whose nodes are ordered pairs of natural numbers (i, j) with 1<= i<= n and 1<= j <= n. Two nodes (i1 ,j1 ) and (i2 ,j2 ) are neighbours if and only if |i 1 - i 2| +| j 1 - j 2| = 1. We assume that each node is assigned a unique natural number xv . A node v is a local minimum if xv \uf03c xu for all neighbors u of v . Given such a graph G and a mapping of natural numbers (labels) to its nodes, the problem is to find a local minimum of G . Give an algorithm which solves the problem in O(n) time. Show that your algorithm always returns a local minimum. Assume that n is a power of 2.",
+  "n_chars": 608
+ }
+]

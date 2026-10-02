@@ -1,0 +1,84 @@
+# Model registry for cls_corr_mi/ standalone pipeline.
+#
+# All six paper models + four Olmo stage checkpoints. Every entry is loaded via
+# plain HuggingFace `transformers.AutoModelForCausalLM`. The vLLM/Unsloth
+# distinction from the paper is ignored here on purpose — using HF transformers
+# for every model is slower but works uniformly across Gemma-3/4 and
+# Llama-Nemotron, which the original vLLM hook path could not cover.
+#
+# Override `model_path` per entry to point at your local snapshot. The string
+# you pass to `--model-key <key>` selects which entry is used.
+
+qwen3_8b:
+  hf_id: Qwen/Qwen3-8B
+  chat_template: true
+  enable_thinking: true
+
+qwen3_32b:
+  hf_id: Qwen/Qwen3-32B
+  chat_template: true
+  enable_thinking: true
+
+olmo3_7b_base:
+  hf_id: allenai/Olmo-3-1025-7B
+  chat_template: false
+  enable_thinking: false
+
+olmo3_7b_sft:
+  hf_id: allenai/Olmo-3-1025-7B-Think-SFT
+  chat_template: true
+  enable_thinking: true
+
+olmo3_7b_dpo:
+  hf_id: allenai/Olmo-3-1025-7B-Think-DPO
+  chat_template: true
+  enable_thinking: true
+
+olmo3_7b_think:
+  hf_id: allenai/Olmo-3-1025-7B-Think
+  chat_template: true
+  enable_thinking: true
+
+olmo3_32b_base:
+  hf_id: allenai/Olmo-3-1125-32B
+  chat_template: false
+  enable_thinking: false
+
+olmo3_32b_sft:
+  hf_id: allenai/Olmo-3-1125-32B-Think-SFT
+  chat_template: true
+  enable_thinking: true
+
+olmo3_32b_dpo:
+  hf_id: allenai/Olmo-3-1125-32B-Think-DPO
+  chat_template: true
+  enable_thinking: true
+
+olmo3_32b_think:
+  hf_id: allenai/Olmo-3-1125-32B-Think
+  chat_template: true
+  enable_thinking: true
+
+gemma4_31b:
+  hf_id: google/gemma-4-31b-it
+  chat_template: true
+  enable_thinking: true
+  # NOTE: Gemma-4 must use HF transformers (vLLM forward hook is unsupported).
+  # Gemma-4's chat template has no thinking toggle; the kwarg is silently
+  # ignored (TypeError fallback in common.apply_chat_template).
+
+nemotron3_31b:
+  hf_id: nvidia/Llama-3.3-Nemotron-Super-49B-v1
+  chat_template: true
+  enable_thinking: true
+  # NOTE: Nemotron must use HF transformers and the paper uses mean-token pooling
+  # (last-token AUROC is near chance for this model — see Appendix D.3).
+  default_pooling: mean
+
+# Test-only entry for cls_corr_mi/tests/smoke_test.sh: a ~5 MB 2-layer GPT-2 that
+# runs end-to-end on CPU in seconds. Not used in the paper; here so the smoke
+# test can exercise the full compute -> score -> classify -> plot pipeline.
+tiny_test:
+  hf_id: sshleifer/tiny-gpt2
+  chat_template: false
+  enable_thinking: false

@@ -1,0 +1,32 @@
+\begin{table}[t]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}lllll@{}}
+        \toprule
+        \textbf{Contrast} & \llama & \qwen & \luna & \gemini \\
+        \midrule
+        \multicolumn{5}{@{}l}{\emph{Refusal of harmful requests} (base rates 86--95\%)} \\
+        \vL{}$-$\vH & $-2.0$ [$-4.1$, $0.0$] & $-1.1$ [$-3.8$, $1.6$] & $-2.5$ [$-4.7$, $-0.4$] & $+3.1$ [$+0.4$, $+5.8$] \\
+        \vS{}$-$\vH (length-matched) & $-0.9$ [$-3.2$, $1.5$] & $+1.5$ [$-0.7$, $4.0$] & $-1.9$ [$-4.3$, $0.3$] & $\mathbf{+3.3}$ [$+0.9$, $+5.8$]$^*$ \\
+        \vPOL{}$-$\vORIG & $-0.3$ & $+0.3$ & $-0.3$ & $+0.3$ \\
+        label AI$-$human (\vH text) & $+0.3$ & $+1.7$ & $+1.4$ & $-0.3$ \\
+        label AI$-$human (\vL text) & $+1.4$ & $+1.4$ & $+1.4$ & $+1.4$ \\
+        \midrule
+        \multicolumn{5}{@{}l}{\emph{Refusal of safe or benign requests (over-refusal)} (base rates 4--12\%)} \\
+        \vL{}$-$\vH & $+0.5$ [$-1.5$, $2.4$] & $0.0$ [$-2.0$, $2.0$] & $-2.1$ [$-4.6$, $0.3$] & $\mathbf{+3.8}$ [$+2.0$, $+5.8$]$^*$ \\
+        \vS{}$-$\vH (length-matched) & $+1.4$ [$-0.4$, $3.4$] & $+2.0$ [$0.0$, $4.1$] & $+0.3$ [$-1.9$, $2.4$] & $\mathbf{+2.7}$ [$+1.0$, $+4.6$]$^*$ \\
+        \vPOL{}$-$\vORIG & $+0.9$ [$-1.1$, $3.1$] & $-0.9$ [$-2.6$, $0.9$] & $-1.1$ [$-3.4$, $1.1$] & $\mathbf{+3.4}$ [$+1.4$, $+5.4$]$^*$ \\
+        label AI$-$human (\vH text) & $+1.4$ [$-0.3$, $3.4$] & $+1.7$ [$0.0$, $3.7$] & $+0.6$ & $-0.9$ \\
+        label AI$-$human (\vL text) & $+3.5$ [$+1.5$, $5.9$]$^\dagger$ & $+1.8$ & $+0.6$ & $+0.6$ \\
+        \midrule
+        \multicolumn{5}{@{}l}{\emph{Sycophancy} (base rates 5--36\%) and \emph{accuracy}} \\
+        sycophancy, \vL{}$-$\vH & $-2.4$ [$-6.6$, $1.4$] & $+2.1$ [$-4.2$, $8.2$] & $0.0$ [$-2.1$, $2.1$] & $-2.4$ [$-5.6$, $0.7$] \\
+        accuracy, \vL{}$-$\vH & $+3.4$ & $-1.0$ & $+1.4$ & $-3.1$ \\
+        accuracy, \vS{}$-$\vH & -- & $\mathbf{-6.7}$ [$-11.4$, $-2.3$]$^*$ & -- & -- \\
+        accuracy, \vPOL{}$-$\vORIG & $\mathbf{+11.3}$ [$+6.0$, $+16.7$]$^*$ & -- & -- & -- \\
+        \bottomrule
+    \end{tabular}
+    }
+    \caption{Content-matched behavioural contrasts, paired within item, in percentage points with 95\% item-cluster bootstrap CIs (rewriters pooled). $^*$ and {\bf bold}: Holm-corrected $p<.05$ across the 16 model $\times$ outcome cells of the contrast family. $^\dagger$: $p=.004$ uncorrected, Holm $p=.067$. Cells without a CI have CIs that include 0; ``--'' marks accuracy cells that are not significant and are omitted for space (all are shown in \figref{fig:contrasts}). Only \gemini shows a robust style effect, and it is reproduced by the polite opener alone (\vPOL{}$-$\vORIG).}
+    \label{tab:contrasts}
+\end{table}

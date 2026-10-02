@@ -1,0 +1,166 @@
+                     model          outcome             contrast  n_items  rate_a  rate_b  diff_pp   ci_lo   ci_hi      p  p_holm
+12                   llama  harmful_refusal                  L-H    294.0   0.932   0.952   -1.968  -4.122   0.000  0.071   0.778
+13                   llama  harmful_refusal                  S-H    294.0   0.938   0.947   -0.859  -3.248   1.544  0.487   1.000
+14                   llama  harmful_refusal                  L-S    294.0   0.933   0.939   -0.541  -2.660   1.619  0.728   1.000
+15                   llama  harmful_refusal               ORIG-H    295.0   0.952   0.947    0.509  -1.020   2.041  0.607   1.000
+16                   llama  harmful_refusal  labAI-labH (H text)    294.0   0.952   0.949    0.340  -1.361   2.041  1.000   1.000
+17                   llama  harmful_refusal  labAI-labH (L text)    290.0   0.972   0.959    1.379   0.000   3.103  0.219   1.000
+18                   llama  harmful_refusal           L-H (labH)    289.0   0.958   0.952    0.692  -1.730   3.114  0.774   1.000
+19                   llama  harmful_refusal             POL-ORIG    300.0   0.950   0.953   -0.333  -2.667   2.000  1.000   1.000
+33                   llama     over_refusal                  L-H    348.0   0.092   0.088    0.455  -1.515   2.424  0.720   1.000
+34                   llama     over_refusal                  S-H    350.0   0.102   0.087    1.431  -0.429   3.433  0.121   1.000
+35                   llama     over_refusal                  L-S    348.0   0.091   0.100   -0.910  -2.879   0.917  0.377   1.000
+36                   llama     over_refusal               ORIG-H    350.0   0.083   0.089   -0.571  -1.714   0.429  0.388   1.000
+37                   llama     over_refusal  labAI-labH (H text)    350.0   0.109   0.094    1.429  -0.286   3.429  0.227   1.000
+38                   llama     over_refusal  labAI-labH (L text)    340.0   0.162   0.126    3.529   1.471   5.882  0.004   0.067
+39                   llama     over_refusal           L-H (labH)    340.0   0.126   0.097    2.941   0.000   5.882  0.076   1.000
+40                   llama     over_refusal             POL-ORIG    350.0   0.091   0.083    0.857  -1.143   3.143  0.607   1.000
+54                   llama       sycophancy                  L-H    147.0   0.125   0.149   -2.431  -6.574   1.394  0.296   1.000
+55                   llama       sycophancy                  S-H    148.0   0.152   0.152    0.000  -4.255   4.211  1.000   1.000
+56                   llama       sycophancy                  L-S    146.0   0.123   0.151   -2.817  -7.042   1.413  0.243   1.000
+57                   llama       sycophancy               ORIG-H    150.0   0.115   0.155   -4.054  -8.754   0.676  0.050   0.701
+58                   llama       sycophancy  labAI-labH (H text)    149.0   0.141   0.148   -0.671  -4.027   2.685  1.000   1.000
+59                   llama       sycophancy  labAI-labH (L text)    147.0   0.095   0.116   -2.041  -5.442   1.361  0.453   1.000
+60                   llama       sycophancy           L-H (labH)    146.0   0.116   0.144   -2.740  -6.849   0.685  0.289   1.000
+61                   llama       sycophancy             POL-ORIG    150.0   0.153   0.113    4.000  -0.667   9.333  0.210   1.000
+74                   llama         accuracy                  L-H    150.0   0.699   0.666    3.378  -1.701   8.503  0.174   1.000
+75                   llama         accuracy                  S-H    150.0   0.682   0.666    1.689  -3.367   6.734  0.551   1.000
+76                   llama         accuracy                  L-S    150.0   0.701   0.680    2.041  -2.712   6.803  0.441   1.000
+77                   llama         accuracy               ORIG-H    150.0   0.645   0.662   -1.672  -6.667   3.041  0.487   1.000
+78                   llama         accuracy  labAI-labH (H text)    150.0   0.680   0.707   -2.667  -8.000   2.000  0.424   1.000
+79                   llama         accuracy  labAI-labH (L text)    148.0   0.730   0.736   -0.676  -3.378   2.027  1.000   1.000
+80                   llama         accuracy           L-H (labH)    148.0   0.736   0.716    2.027  -4.054   8.108  0.678   1.000
+81                   llama         accuracy             POL-ORIG    150.0   0.760   0.647   11.333   6.000  16.667  0.000   0.001
+94                    qwen  harmful_refusal                  L-H    294.0   0.919   0.930   -1.073  -3.763   1.607  0.451   1.000
+95                    qwen  harmful_refusal                  S-H    294.0   0.938   0.923    1.546  -0.690   3.952  0.200   1.000
+96                    qwen  harmful_refusal                  L-S    294.0   0.919   0.939   -1.982  -4.278   0.182  0.090   1.000
+97                    qwen  harmful_refusal               ORIG-H    295.0   0.935   0.922    1.358  -0.849   3.559  0.185   1.000
+98                    qwen  harmful_refusal  labAI-labH (H text)    294.0   0.932   0.915    1.701  -1.020   4.422  0.332   1.000
+99                    qwen  harmful_refusal  labAI-labH (L text)    290.0   0.941   0.928    1.379  -0.345   3.448  0.289   1.000
+100                   qwen  harmful_refusal           L-H (labH)    289.0   0.927   0.920    0.692  -1.730   3.114  0.791   1.000
+101                   qwen  harmful_refusal             POL-ORIG    300.0   0.940   0.937    0.333  -1.667   2.667  1.000   1.000
+115                   qwen     over_refusal                  L-H    348.0   0.082   0.082    0.000  -1.985   1.961  1.000   1.000
+116                   qwen     over_refusal                  S-H    350.0   0.103   0.083    2.003   0.000   4.149  0.029   0.346
+117                   qwen     over_refusal                  L-S    348.0   0.080   0.100   -1.973  -3.620  -0.460  0.007   0.115
+118                   qwen     over_refusal               ORIG-H    350.0   0.091   0.084    0.714  -0.857   2.286  0.383   1.000
+119                   qwen     over_refusal  labAI-labH (H text)    350.0   0.097   0.080    1.714   0.000   3.714  0.146   1.000
+120                   qwen     over_refusal  labAI-labH (L text)    340.0   0.106   0.088    1.765  -0.294   3.824  0.180   1.000
+121                   qwen     over_refusal           L-H (labH)    340.0   0.088   0.082    0.588  -2.059   3.235  0.832   1.000
+122                   qwen     over_refusal             POL-ORIG    350.0   0.083   0.091   -0.857  -2.571   0.857  0.508   1.000
+136                   qwen       sycophancy                  L-H    147.0   0.372   0.351    2.083  -4.152   8.247  0.519   1.000
+137                   qwen       sycophancy                  S-H    148.0   0.330   0.348   -1.773  -7.719   4.001  0.597   1.000
+138                   qwen       sycophancy                  L-S    146.0   0.370   0.324    4.577  -1.389  10.602  0.117   1.000
+139                   qwen       sycophancy               ORIG-H    150.0   0.297   0.351   -5.405 -12.203   1.356  0.056   0.727
+140                   qwen       sycophancy  labAI-labH (H text)    149.0   0.356   0.309    4.698  -0.671  10.067  0.167   1.000
+141                   qwen       sycophancy  labAI-labH (L text)    147.0   0.367   0.408   -4.082  -8.844   0.680  0.146   1.000
+142                   qwen       sycophancy           L-H (labH)    146.0   0.411   0.308   10.274   2.740  17.808  0.011   0.171
+143                   qwen       sycophancy             POL-ORIG    150.0   0.367   0.300    6.667   0.667  12.667  0.052   0.735
+156                   qwen         accuracy                  L-H    150.0   0.598   0.608   -1.014  -6.020   3.729  0.761   1.000
+157                   qwen         accuracy                  S-H    150.0   0.542   0.609   -6.734 -11.448  -2.349  0.002   0.033
+158                   qwen         accuracy                  L-S    150.0   0.600   0.542    5.763   1.374  10.135  0.019   0.242
+159                   qwen         accuracy               ORIG-H    150.0   0.619   0.609    1.003  -3.691   6.000  0.720   1.000
+160                   qwen         accuracy  labAI-labH (H text)    150.0   0.640   0.593    4.667   1.333   8.667  0.039   0.625
+161                   qwen         accuracy  labAI-labH (L text)    148.0   0.608   0.608    0.000  -4.054   4.054  1.000   1.000
+162                   qwen         accuracy           L-H (labH)    148.0   0.608   0.595    1.351  -4.054   6.757  0.815   1.000
+163                   qwen         accuracy             POL-ORIG    150.0   0.593   0.620   -2.667  -7.333   2.000  0.424   1.000
+176           gpt-5.6-luna  harmful_refusal                  L-H    294.0   0.907   0.932   -2.504  -4.685  -0.363  0.016   0.226
+177           gpt-5.6-luna  harmful_refusal                  S-H    294.0   0.904   0.923   -1.890  -4.274   0.343  0.090   0.985
+178           gpt-5.6-luna  harmful_refusal                  L-S    294.0   0.906   0.908   -0.180  -1.802   1.429  1.000   1.000
+179           gpt-5.6-luna  harmful_refusal               ORIG-H    295.0   0.915   0.924   -0.849  -3.396   1.695  0.487   1.000
+180           gpt-5.6-luna  harmful_refusal  labAI-labH (H text)    294.0   0.932   0.918    1.361  -0.680   3.401  0.344   1.000
+181           gpt-5.6-luna  harmful_refusal  labAI-labH (L text)    290.0   0.934   0.921    1.379  -0.345   3.448  0.289   1.000
+182           gpt-5.6-luna  harmful_refusal           L-H (labH)    289.0   0.920   0.931   -1.038  -3.460   1.384  0.581   1.000
+183           gpt-5.6-luna  harmful_refusal             POL-ORIG    300.0   0.913   0.917   -0.333  -2.333   2.000  1.000   1.000
+198           gpt-5.6-luna     over_refusal                  L-H    348.0   0.097   0.118   -2.121  -4.637   0.302  0.059   0.773
+199           gpt-5.6-luna     over_refusal                  S-H    350.0   0.117   0.114    0.286  -1.865   2.432  0.878   1.000
+200           gpt-5.6-luna     over_refusal                  L-S    348.0   0.096   0.120   -2.428  -4.552  -0.303  0.011   0.159
+201           gpt-5.6-luna     over_refusal               ORIG-H    350.0   0.109   0.116   -0.714  -2.857   1.286  0.487   1.000
+202           gpt-5.6-luna     over_refusal  labAI-labH (H text)    350.0   0.117   0.111    0.571  -0.857   2.000  0.688   1.000
+203           gpt-5.6-luna     over_refusal  labAI-labH (L text)    340.0   0.118   0.112    0.588  -1.471   2.647  0.791   1.000
+204           gpt-5.6-luna     over_refusal           L-H (labH)    340.0   0.112   0.115   -0.294  -2.941   2.353  1.000   1.000
+205           gpt-5.6-luna     over_refusal             POL-ORIG    350.0   0.097   0.109   -1.143  -3.429   1.143  0.481   1.000
+220           gpt-5.6-luna       sycophancy                  L-H    147.0   0.056   0.056    0.000  -2.083   2.113  1.000   1.000
+221           gpt-5.6-luna       sycophancy                  S-H    148.0   0.096   0.057    3.901   1.408   6.738  0.013   0.165
+222           gpt-5.6-luna       sycophancy                  L-S    146.0   0.053   0.095   -4.225  -6.762  -1.779  0.008   0.115
+223           gpt-5.6-luna       sycophancy               ORIG-H    150.0   0.068   0.054    1.351  -1.351   4.110  0.344   1.000
+224           gpt-5.6-luna       sycophancy  labAI-labH (H text)    149.0   0.047   0.054   -0.671  -2.685   1.342  1.000   1.000
+225           gpt-5.6-luna       sycophancy  labAI-labH (L text)    147.0   0.061   0.054    0.680  -2.041   3.401  1.000   1.000
+226           gpt-5.6-luna       sycophancy           L-H (labH)    146.0   0.055   0.055    0.000  -2.740   2.740  1.000   1.000
+227           gpt-5.6-luna       sycophancy             POL-ORIG    150.0   0.060   0.067   -0.667  -3.333   1.333  1.000   1.000
+240           gpt-5.6-luna         accuracy                  L-H    150.0   0.875   0.861    1.351  -1.342   4.068  0.481   1.000
+241           gpt-5.6-luna         accuracy                  S-H    150.0   0.862   0.859    0.337  -3.051   3.742  1.000   1.000
+242           gpt-5.6-luna         accuracy                  L-S    150.0   0.878   0.861    1.695  -0.676   4.068  0.332   1.000
+243           gpt-5.6-luna         accuracy               ORIG-H    150.0   0.880   0.860    2.007  -1.672   6.000  0.286   1.000
+244           gpt-5.6-luna         accuracy  labAI-labH (H text)    150.0   0.853   0.827    2.667  -1.333   6.667  0.344   1.000
+245           gpt-5.6-luna         accuracy  labAI-labH (L text)    148.0   0.872   0.858    1.351  -2.027   5.405  0.727   1.000
+246           gpt-5.6-luna         accuracy           L-H (labH)    148.0   0.858   0.831    2.703  -2.027   8.108  0.424   1.000
+247           gpt-5.6-luna         accuracy             POL-ORIG    150.0   0.873   0.880   -0.667  -4.667   3.333  1.000   1.000
+260  gemini-3.5-flash-lite  harmful_refusal                  L-H    291.0   0.901   0.870    3.074   0.365   5.818  0.009   0.142
+261  gemini-3.5-flash-lite  harmful_refusal                  S-H    292.0   0.894   0.861    3.299   0.876   5.769  0.003   0.047
+262  gemini-3.5-flash-lite  harmful_refusal                  L-S    291.0   0.900   0.896    0.364  -1.284   2.011  0.839   1.000
+263  gemini-3.5-flash-lite  harmful_refusal               ORIG-H    292.0   0.883   0.863    2.058  -0.172   4.467  0.036   0.535
+264  gemini-3.5-flash-lite  harmful_refusal  labAI-labH (H text)    292.0   0.880   0.884   -0.342  -2.740   2.055  1.000   1.000
+265  gemini-3.5-flash-lite  harmful_refusal  labAI-labH (L text)    288.0   0.910   0.896    1.389  -1.389   4.167  0.454   1.000
+266  gemini-3.5-flash-lite  harmful_refusal           L-H (labH)    287.0   0.895   0.895    0.000  -2.787   2.439  1.000   1.000
+267  gemini-3.5-flash-lite  harmful_refusal             POL-ORIG    297.0   0.889   0.886    0.337  -2.020   2.694  1.000   1.000
+281  gemini-3.5-flash-lite     over_refusal                  L-H    347.0   0.084   0.046    3.805   1.979   5.766  0.000   0.000
+282  gemini-3.5-flash-lite     over_refusal                  S-H    348.0   0.072   0.045    2.746   1.010   4.631  0.000   0.005
+283  gemini-3.5-flash-lite     over_refusal                  L-S    346.0   0.084   0.074    1.074  -0.155   2.454  0.118   1.000
+284  gemini-3.5-flash-lite     over_refusal               ORIG-H    349.0   0.040   0.044   -0.430  -1.862   1.146  0.648   1.000
+285  gemini-3.5-flash-lite     over_refusal  labAI-labH (H text)    349.0   0.049   0.057   -0.860  -2.579   0.860  0.508   1.000
+286  gemini-3.5-flash-lite     over_refusal  labAI-labH (L text)    336.0   0.065   0.060    0.595  -1.190   2.381  0.754   1.000
+287  gemini-3.5-flash-lite     over_refusal           L-H (labH)    337.0   0.059   0.059    0.000  -2.077   2.077  1.000   1.000
+288  gemini-3.5-flash-lite     over_refusal             POL-ORIG    349.0   0.074   0.040    3.438   1.433   5.444  0.002   0.027
+302  gemini-3.5-flash-lite       sycophancy                  L-H    147.0   0.094   0.118   -2.431  -5.594   0.683  0.167   1.000
+303  gemini-3.5-flash-lite       sycophancy                  S-H    148.0   0.099   0.106   -0.709  -4.255   2.509  0.839   1.000
+304  gemini-3.5-flash-lite       sycophancy                  L-S    146.0   0.092   0.099   -0.704  -3.901   2.482  0.832   1.000
+305  gemini-3.5-flash-lite       sycophancy               ORIG-H    150.0   0.068   0.115   -4.730  -8.503  -1.338  0.004   0.069
+306  gemini-3.5-flash-lite       sycophancy  labAI-labH (H text)    149.0   0.060   0.060    0.000  -2.013   2.013  1.000   1.000
+307  gemini-3.5-flash-lite       sycophancy  labAI-labH (L text)    147.0   0.088   0.075    1.361  -2.041   4.762  0.688   1.000
+308  gemini-3.5-flash-lite       sycophancy           L-H (labH)    146.0   0.075   0.062    1.370  -1.370   4.110  0.625   1.000
+309  gemini-3.5-flash-lite       sycophancy             POL-ORIG    150.0   0.073   0.067    0.667  -2.000   3.333  1.000   1.000
+322  gemini-3.5-flash-lite         accuracy                  L-H    150.0   0.875   0.905   -3.051  -6.463   0.338  0.064   0.773
+323  gemini-3.5-flash-lite         accuracy                  S-H    150.0   0.886   0.902   -1.684  -4.714   1.347  0.332   1.000
+324  gemini-3.5-flash-lite         accuracy                  L-S    150.0   0.878   0.888   -1.020  -4.096   2.041  0.678   1.000
+325  gemini-3.5-flash-lite         accuracy               ORIG-H    150.0   0.913   0.903    1.003  -2.667   4.682  0.607   1.000
+326  gemini-3.5-flash-lite         accuracy  labAI-labH (H text)    150.0   0.913   0.900    1.333  -1.333   4.000  0.625   1.000
+327  gemini-3.5-flash-lite         accuracy  labAI-labH (L text)    147.0   0.857   0.912   -5.442  -9.524  -1.361  0.021   0.322
+328  gemini-3.5-flash-lite         accuracy           L-H (labH)    148.0   0.912   0.899    1.351  -2.027   5.405  0.727   1.000
+329  gemini-3.5-flash-lite         accuracy             POL-ORIG    150.0   0.907   0.913   -0.667  -4.000   2.667  1.000   1.000
+                  kind                  model          outcome  diff_pp   ci_lo   ci_hi      p
+20   contrast_strmatch                  llama  harmful_refusal    3.220   0.182   6.261  0.018
+41   contrast_strmatch                  llama     over_refusal    0.455  -1.654   2.537  0.728
+102  contrast_strmatch                   qwen  harmful_refusal   -0.894  -4.270   2.491  0.644
+123  contrast_strmatch                   qwen     over_refusal    2.879   0.748   5.046  0.005
+184  contrast_strmatch           gpt-5.6-luna  harmful_refusal   -7.692 -10.893  -4.651  0.000
+185  contrast_nofilter           gpt-5.6-luna  harmful_refusal   -1.595  -3.864   0.680  0.210
+206  contrast_strmatch           gpt-5.6-luna     over_refusal   -3.030  -5.015  -1.218  0.000
+207  contrast_nofilter           gpt-5.6-luna     over_refusal    0.697  -0.880   2.422  0.481
+268  contrast_strmatch  gemini-3.5-flash-lite  harmful_refusal    7.957   4.874  11.191  0.000
+289  contrast_strmatch  gemini-3.5-flash-lite     over_refusal    4.414   2.417   6.637  0.000
+                    model          outcome  n_items_informative  llm_style_coef  log_chars_coef  rewriterB_coef  llm_style_lo  log_chars_lo  rewriterB_lo  llm_style_hi  log_chars_hi  rewriterB_hi  llm_style_p  log_chars_p  rewriterB_p
+0                   llama  harmful_refusal                   36          -0.416          -0.136          -0.308        -1.214        -0.777        -0.911         0.381         0.504         0.295        0.306        0.677        0.317
+1                   llama     over_refusal                   37           0.438          -0.041          -0.376        -0.360        -0.769        -0.972         1.236         0.686         0.221        0.282        0.911        0.217
+2                   llama       sycophancy                   38           0.289          -1.341           0.468        -0.488        -2.648        -0.111         1.065        -0.034         1.048        0.466        0.044        0.113
+3                   llama         accuracy                   45           0.009           0.607          -0.513        -0.744        -0.282        -1.034         0.762         1.495         0.007        0.981        0.181        0.053
+4                    qwen  harmful_refusal                   47           0.826          -0.859          -0.277         0.102        -1.466        -0.817         1.549        -0.251         0.263        0.025        0.006        0.315
+5                    qwen     over_refusal                   32           1.630          -1.636           0.322         0.713        -2.527        -0.340         2.547        -0.745         0.984        0.000        0.000        0.340
+6                    qwen       sycophancy                   66          -0.098           0.243           0.041        -0.691        -0.674        -0.384         0.495         1.161         0.466        0.747        0.603        0.850
+7                    qwen         accuracy                   47          -1.243           1.101          -0.541        -2.021         0.217        -1.068        -0.466         1.984        -0.013        0.002        0.015        0.045
+8            gpt-5.6-luna  harmful_refusal                   35          -0.728          -0.146          -0.527        -1.565        -0.879        -1.161         0.108         0.587         0.107        0.088        0.696        0.103
+9            gpt-5.6-luna     over_refusal                   42           0.630          -1.275          -0.272        -0.162        -2.056        -0.831         1.423        -0.493         0.287        0.119        0.001        0.340
+10           gpt-5.6-luna       sycophancy                   19           1.769          -2.049           1.540         0.500        -3.877         0.531         3.038        -0.222         2.549        0.006        0.028        0.003
+11           gpt-5.6-luna         accuracy                   25           0.035           0.385          -0.129        -0.950        -0.811        -0.835         1.021         1.582         0.578        0.944        0.528        0.721
+12  gemini-3.5-flash-lite  harmful_refusal                   37           1.343          -0.239          -0.074         0.546        -0.926        -0.667         2.140         0.448         0.518        0.001        0.495        0.806
+13  gemini-3.5-flash-lite     over_refusal                   27           1.913           0.947           0.365         0.752        -0.013        -0.450         3.075         1.906         1.180        0.001        0.053        0.380
+14  gemini-3.5-flash-lite       sycophancy                   27          -0.280          -0.424          -0.053        -1.230        -1.961        -0.745         0.669         1.112         0.639        0.563        0.588        0.882
+15  gemini-3.5-flash-lite         accuracy                   22          -0.829          -0.051          -0.016        -2.016        -1.254        -0.789         0.357         1.153         0.757        0.171        0.934        0.968
+   model          outcome  n_items_informative  proj_coef  proj_lo  proj_hi  proj_p  len_coef  len_p
+0  llama  harmful_refusal                   36     -0.115   -0.559    0.329   0.612    -0.286  0.386
+1  llama     over_refusal                   37      0.355   -0.092    0.802   0.119    -0.292  0.445
+2  llama       sycophancy                   38      0.421   -0.297    1.139   0.250    -1.507  0.034
+3  llama         accuracy                   45      0.249   -0.242    0.741   0.320     0.235  0.587
+4   qwen  harmful_refusal                   47      0.518    0.034    1.002   0.036    -1.360  0.005
+5   qwen     over_refusal                   32      1.015    0.334    1.697   0.003    -2.310  0.001
+6   qwen       sycophancy                   66     -0.006   -0.383    0.371   0.975     0.170  0.779
+7   qwen         accuracy                   47     -0.672   -1.251   -0.092   0.023     1.272  0.043

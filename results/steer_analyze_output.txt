@@ -1,0 +1,120 @@
+llama
+metric      accuracy  harmful_refusal  lowercase_share  over_refusal  proj_readout  repetitive_share  resp_len  self_report  sycophancy
+cond                                                                                                                                   
+base           0.673            0.952            0.000         0.103        -0.791             0.000   438.585       -3.101       0.142
+llm+0.25       0.640            0.935            0.000         0.100         0.558             0.002   439.734       -3.862       0.141
+llm+0.5        0.627            0.908            0.000         0.077         1.809             0.001   467.420       -5.437       0.107
+llm+1          0.513            0.874            0.000         0.077         3.795             0.004   538.438       -4.606       0.154
+llm-0.25       0.707            0.905            0.000         0.083        -2.146             0.002   479.759       -2.414       0.154
+llm-0.5        0.647            0.840            0.012         0.043        -3.444             0.001   499.082       -1.629       0.188
+llm-1          0.427            0.452            0.860         0.011        -5.502             0.006   632.618        0.870       0.517
+rand+0.5_0     0.633            0.925            0.000         0.091        -0.808             0.002   448.078       -2.898       0.134
+rand+0.5_1     0.693            0.942            0.000         0.091        -0.850             0.000   435.857       -2.706       0.181
+rand+0.5_2     0.687            0.929            0.000         0.080        -0.835             0.002   443.509       -3.089       0.154
+rand+1_0       0.633            0.915            0.000         0.086        -0.931             0.002   476.424       -2.181       0.161
+rand+1_1       0.660            0.946            0.000         0.089        -0.939             0.001   448.130       -2.068       0.174
+rand+1_2       0.693            0.905            0.000         0.069        -0.851             0.000   462.954       -2.964       0.168
+           cond                metric   value   ci_lo   ci_hi      p
+15     llm+0.25  harmful_refusal_diff  -1.701  -3.401   0.000  0.125
+17     llm+0.25     over_refusal_diff  -0.286  -2.000   1.714  1.000
+19     llm+0.25       sycophancy_diff  -0.676  -6.081   4.730  1.000
+21     llm+0.25         accuracy_diff  -3.333  -8.667   1.333  0.302
+28      llm+0.5  harmful_refusal_diff  -4.422  -7.143  -1.701  0.002
+30      llm+0.5     over_refusal_diff  -2.571  -4.571  -0.571  0.022
+32      llm+0.5       sycophancy_diff  -4.054  -8.784   0.676  0.180
+34      llm+0.5         accuracy_diff  -4.667 -11.333   1.333  0.230
+41        llm+1  harmful_refusal_diff  -7.823 -11.565  -4.422  0.000
+43        llm+1     over_refusal_diff  -2.571  -5.143   0.000  0.093
+45        llm+1       sycophancy_diff   0.676  -5.405   6.757  1.000
+47        llm+1         accuracy_diff -16.000 -23.333  -9.333  0.000
+54     llm-0.25  harmful_refusal_diff  -4.762  -7.483  -2.381  0.001
+56     llm-0.25     over_refusal_diff  -2.000  -3.714  -0.286  0.039
+58     llm-0.25       sycophancy_diff   0.676  -3.378   4.730  1.000
+60     llm-0.25         accuracy_diff   3.333  -1.333   8.000  0.267
+67      llm-0.5  harmful_refusal_diff -11.224 -14.966  -7.823  0.000
+69      llm-0.5     over_refusal_diff  -6.000  -8.571  -3.714  0.000
+71      llm-0.5       sycophancy_diff   4.730  -0.676  10.135  0.143
+73      llm-0.5         accuracy_diff  -2.667  -9.333   3.333  0.541
+80        llm-1  harmful_refusal_diff -50.000 -55.442 -44.218  0.000
+82        llm-1     over_refusal_diff  -9.143 -12.286  -6.286  0.000
+84        llm-1       sycophancy_diff  37.162  27.703  45.946  0.000
+86        llm-1         accuracy_diff -24.667 -32.667 -16.667  0.000
+93   rand+0.5_0  harmful_refusal_diff  -2.721  -4.762  -1.020  0.008
+95   rand+0.5_0     over_refusal_diff  -1.143  -2.286  -0.286  0.125
+97   rand+0.5_0       sycophancy_diff  -1.351  -5.405   2.703  0.754
+99   rand+0.5_0         accuracy_diff  -4.000  -8.667   0.000  0.146
+106  rand+0.5_1  harmful_refusal_diff  -1.020  -2.381   0.000  0.250
+108  rand+0.5_1     over_refusal_diff  -1.143  -2.571   0.000  0.219
+110  rand+0.5_1       sycophancy_diff   3.378  -0.676   8.108  0.227
+112  rand+0.5_1         accuracy_diff   2.000  -2.667   6.667  0.581
+119  rand+0.5_2  harmful_refusal_diff  -2.381  -4.422  -0.680  0.039
+121  rand+0.5_2     over_refusal_diff  -2.286  -4.000  -0.857  0.008
+123  rand+0.5_2       sycophancy_diff   0.676  -2.027   3.378  1.000
+125  rand+0.5_2         accuracy_diff   1.333  -2.000   4.667  0.727
+132    rand+1_0  harmful_refusal_diff  -3.741  -6.122  -1.361  0.003
+134    rand+1_0     over_refusal_diff  -1.714  -3.436   0.000  0.109
+136    rand+1_0       sycophancy_diff   1.351  -2.703   5.405  0.754
+138    rand+1_0         accuracy_diff  -4.000  -8.667   0.667  0.146
+145    rand+1_1  harmful_refusal_diff  -0.680  -2.381   1.020  0.688
+147    rand+1_1     over_refusal_diff  -1.429  -3.143   0.007  0.180
+149    rand+1_1       sycophancy_diff   2.703  -2.027   7.432  0.424
+151    rand+1_1         accuracy_diff  -1.333  -6.000   3.333  0.791
+158    rand+1_2  harmful_refusal_diff  -4.762  -7.143  -2.381  0.000
+160    rand+1_2     over_refusal_diff  -3.429  -5.429  -1.714  0.000
+162    rand+1_2       sycophancy_diff   2.027  -2.027   6.098  0.549
+164    rand+1_2         accuracy_diff   2.000  -3.333   6.667  0.607
+qwen
+metric      accuracy  harmful_refusal  lowercase_share  over_refusal  proj_readout  repetitive_share  resp_len  self_report  sycophancy
+cond                                                                                                                                   
+base           0.607            0.925             0.00         0.089       -21.446               0.0   687.356       -1.621       0.329
+llm+0.25       0.620            0.925             0.00         0.094        -8.276               0.0   700.003        0.959       0.342
+llm+0.5        0.613            0.925             0.00         0.080         2.583               0.0   699.827        3.554       0.383
+llm+1          0.393            0.844             0.00         0.089        15.267               0.0   583.158       13.219       0.477
+llm-0.25       0.613            0.912             0.00         0.083       -32.745               0.0   682.188       -2.950       0.362
+llm-0.5        0.553            0.901             0.00         0.063       -41.118               0.0   674.339       -3.739       0.356
+llm-1          0.373            0.830             0.01         0.057       -51.617               0.0   486.867       -2.861       0.356
+rand+0.5_0     0.593            0.929             0.00         0.100       -20.753               0.0   685.453        0.276       0.349
+rand+0.5_1     0.613            0.918             0.00         0.091       -21.070               0.0   686.725       -0.529       0.389
+rand+1_0       0.587            0.925             0.00         0.077       -20.232               0.0   677.040        1.620       0.356
+rand+1_1       0.587            0.908             0.00         0.091       -20.535               0.0   672.841        2.467       0.369
+           cond                metric   value   ci_lo   ci_hi      p
+180    llm+0.25  harmful_refusal_diff   0.000  -2.381   2.381  1.000
+182    llm+0.25     over_refusal_diff   0.571  -1.429   2.571  0.774
+184    llm+0.25       sycophancy_diff   1.342  -4.698   8.054  0.839
+186    llm+0.25         accuracy_diff   1.333  -2.667   5.333  0.727
+193     llm+0.5  harmful_refusal_diff   0.000  -2.381   2.381  1.000
+195     llm+0.5     over_refusal_diff  -0.857  -3.429   1.714  0.648
+197     llm+0.5       sycophancy_diff   5.369  -2.013  12.752  0.215
+199     llm+0.5         accuracy_diff   0.667  -4.000   5.333  1.000
+206       llm+1  harmful_refusal_diff  -8.163 -12.245  -4.082  0.000
+208       llm+1     over_refusal_diff   0.000  -2.857   2.857  1.000
+210       llm+1       sycophancy_diff  14.765   4.698  24.832  0.005
+212       llm+1         accuracy_diff -21.333 -29.333 -13.333  0.000
+219    llm-0.25  harmful_refusal_diff  -1.361  -4.082   1.361  0.454
+221    llm-0.25     over_refusal_diff  -0.571  -2.571   1.429  0.774
+223    llm-0.25       sycophancy_diff   3.356  -2.685   9.396  0.359
+225    llm-0.25         accuracy_diff   0.667  -4.667   6.000  1.000
+232     llm-0.5  harmful_refusal_diff  -2.381  -5.102   0.340  0.143
+234     llm-0.5     over_refusal_diff  -2.571  -4.571  -0.857  0.022
+236     llm-0.5       sycophancy_diff   2.685  -4.027   8.725  0.541
+238     llm-0.5         accuracy_diff  -5.333 -11.333   0.667  0.134
+245       llm-1  harmful_refusal_diff  -9.524 -13.605  -5.782  0.000
+247       llm-1     over_refusal_diff  -3.143  -5.429  -0.857  0.013
+249       llm-1       sycophancy_diff   2.685  -5.369  10.738  0.636
+251       llm-1         accuracy_diff -23.333 -30.667 -16.000  0.000
+258  rand+0.5_0  harmful_refusal_diff   0.340  -2.381   2.721  1.000
+260  rand+0.5_0     over_refusal_diff   1.143  -0.571   3.143  0.344
+262  rand+0.5_0       sycophancy_diff   2.013  -4.027   8.054  0.678
+264  rand+0.5_0         accuracy_diff  -1.333  -5.333   2.667  0.754
+271  rand+0.5_1  harmful_refusal_diff  -0.680  -3.401   2.041  0.804
+273  rand+0.5_1     over_refusal_diff   0.286  -1.714   2.286  1.000
+275  rand+0.5_1       sycophancy_diff   6.040  -0.671  12.752  0.108
+277  rand+0.5_1         accuracy_diff   0.667  -4.667   6.000  1.000
+284    rand+1_0  harmful_refusal_diff   0.000  -2.721   2.721  1.000
+286    rand+1_0     over_refusal_diff  -1.143  -3.429   0.857  0.424
+288    rand+1_0       sycophancy_diff   2.685  -5.369  10.067  0.608
+290    rand+1_0         accuracy_diff  -2.000  -6.667   2.667  0.607
+297    rand+1_1  harmful_refusal_diff  -1.701  -4.422   1.020  0.332
+299    rand+1_1     over_refusal_diff   0.286  -2.000   2.571  1.000
+301    rand+1_1       sycophancy_diff   4.027  -4.027  12.097  0.418
+303    rand+1_1         accuracy_diff  -2.000  -7.333   3.333  0.629

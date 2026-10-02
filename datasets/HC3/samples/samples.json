@@ -1,0 +1,35 @@
+[
+ {
+  "question": "Why is every book I hear about a \" NY Times # 1 Best Seller \" ? ELI5 : Why is every book I hear about a \" NY Times # 1 Best Seller \" ? Should n't there only be one \" # 1 \" best seller ? Please explain like I'm five.",
+  "human_answers": [
+   "Basically there are many categories of \" Best Seller \" . Replace \" Best Seller \" by something like \" Oscars \" and every \" best seller \" book is basically an \" oscar - winning \" book . May not have won the \" Best film \" , but even if you won the best director or best script , you 're still an \" oscar - winning \" film . Same thing for best sellers . Also , IIRC the rankings change every week or some"
+  ],
+  "chatgpt_answers": [
+   "There are many different best seller lists that are published by various organizations, and the New York Times is just one of them. The New York Times best seller list is a weekly list that ranks the best-selling books in the United States based on sales data from a number of different retailers. The list is published in the New York Times newspaper and is widely considered to be one of the most i"
+  ],
+  "index": null,
+  "source": "reddit_eli5"
+ },
+ {
+  "question": "If salt is so bad for cars , why do we use it on the roads ? As the title states , why do we use it ? is there no other option or what ? Please explain like I'm five.",
+  "human_answers": [
+   "salt is good for not dying in car crashes and car crashes are worse for cars then salt . Some places use other things , but salt is really cheap compared to most alternatives , although sand is pretty good ."
+  ],
+  "chatgpt_answers": [
+   "Salt is used on roads to help melt ice and snow and improve traction during the winter months. When it's cold outside, water can freeze on the roads and make them very slippery, which can be dangerous for cars and people. Salt helps to melt the ice and snow by lowering the freezing point of water, which means that it can help keep the roads clear and safe to travel on. \nThere are other options for"
+  ],
+  "index": null,
+  "source": "reddit_eli5"
+ },
+ {
+  "question": "Why do we still have SD TV channels when HD looks like SD on an old TV ? Could n't we just have the HD version of the channels & delete the SD ones ? Please explain like I'm five.",
+  "human_answers": [
+   "The way it works is that old TV stations got a certain amount of bandwidth to replace their old analog TV stations . However , HD takes up more bandwidth then SD - so the stations can choose between 2 or 3 HD stations , or like 7 or 8 SD stations ( or a mix of both ) They can do a bunch of SD stations and make more money in advertizing by running 7 or 8 different reruns of old SD TV shows at a tim"
+  ],
+  "chatgpt_answers": [
+   "There are a few reasons why we still have SD (standard definition) TV channels: \n1. Some people still use older TVs that are not compatible with HD (high definition) signals. These TVs can only display SD channels, so if we only had HD channels, those people wouldn't be able to watch TV. \n2. HD channels take up more bandwidth than SD channels, so it's not possible to have as many HD channels as we"
+  ],
+  "index": null,
+  "source": "reddit_eli5"
+ }
+]

@@ -1,0 +1,25 @@
+\section{Related Work}
+\label{sec:related}
+
+\para{Evaluation awareness.}
+Models can distinguish evaluation from deployment transcripts, with a best AUC of 0.83 against 0.92 for humans~\citep{needham2025large}; the cues they cite include structured, formal phrasing.
+Linear probes find an evaluation-awareness direction~\citep{nguyen2025probing,heidari2026evaluation}, and steering it changes harmful tool-call compliance in reasoning models~\citep{abdelnabi2025hawthorne} or flips evaluation-specific behaviour in a fine-tuned model~\citep{hua2025steering}.
+Yet the direction tracks benchmark format rather than context~\citep{devbunova2026evaluation}, machine-generated instructions are classified as ``deployment''~\citep{nguyen2025probing}, and detection, representation and behaviour are only weakly coupled~\citep{nayan2026evaluation,heidari2026evaluation}.
+Building on the 16 contrastive pairs of \citet{hua2025steering}, we measure how a ``reads-LLM'' direction relates to evaluation awareness, and we find them nearly orthogonal.
+
+\para{AI--AI bias and recognition of LLM text.}
+LLM judges recognise and prefer their own summaries~\citep{panickssery2024llm}, prefer LLM-written product and paper descriptions over human-written ones~\citep{laurito2025ai}, and favour LLM-written resume summaries, more strongly in large models~\citep{xu2025ai}.
+Self-recognition in Llama-3-8B is carried by a steerable residual direction, but it largely reflects length~\citep{ackerman2024inspection}.
+In all of these studies the LLM-written text is the \emph{object} being evaluated.
+Unlike this line of work, we vary the authorship style of the \emph{instruction} and measure safety behaviour.
+
+\para{Hidden-state detection of machine text and of the interlocutor.}
+Human and LLM documents are linearly separable from last-token activations~\citep{quaremba2026linear} or from paired activation differences~\citep{chen2025repreguard}, though transfer is weakest when content is fixed.
+TalkTuner~\citep{chen2024designing} reads user demographics from chat activations where verbal prompting fails, and steers answers with the same probes.
+We apply this probe-then-steer recipe to prompt authorship and test whether the representation matters for behaviour, not only whether it exists.
+
+\para{Prompt style, construction and safety behaviour.}
+Register and framing move behaviour with information held fixed: casual challenges induce more answer switching than formal ones~\citep{kim2025challenging}, and sycophancy benchmarks rely on first-person belief statements~\citep{sharma2023towards}.
+LLM user simulators match real users poorly on formality and capitalisation~\citep{ivey2024real}.
+The work closest to ours~\citep{chalkidis2026templated} finds that templated and LLM-generated prompts produce different stances, and attributes the gap to template filler content; it leaves open whether recognising a prompt's source changes behaviour.
+Unlike that study, we match content at the item level, separate length and politeness from authorship, and test the authorship representation causally.

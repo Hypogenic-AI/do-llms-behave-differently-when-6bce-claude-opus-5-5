@@ -1,0 +1,67 @@
+{
+ "layers": [
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16
+ ],
+ "readout_layer": 20,
+ "conds": {
+  "base": {
+   "self_report_logodds": -3.101405143737793,
+   "proj_readout": -0.7913193106651306
+  },
+  "llm+0.25": {
+   "self_report_logodds": -3.8623409271240234,
+   "proj_readout": 0.5575901865959167
+  },
+  "llm-0.25": {
+   "self_report_logodds": -2.413905143737793,
+   "proj_readout": -2.1463613510131836
+  },
+  "llm+0.5": {
+   "self_report_logodds": -5.437201976776123,
+   "proj_readout": 1.8085495233535767
+  },
+  "llm-0.5": {
+   "self_report_logodds": -1.628844141960144,
+   "proj_readout": -3.44405198097229
+  },
+  "llm+1": {
+   "self_report_logodds": -4.606375694274902,
+   "proj_readout": 3.794696092605591
+  },
+  "llm-1": {
+   "self_report_logodds": 0.870095431804657,
+   "proj_readout": -5.501662731170654
+  },
+  "rand+0.5_0": {
+   "self_report_logodds": -2.8983960151672363,
+   "proj_readout": -0.8081316947937012
+  },
+  "rand+0.5_1": {
+   "self_report_logodds": -2.7063891887664795,
+   "proj_readout": -0.8495344519615173
+  },
+  "rand+0.5_2": {
+   "self_report_logodds": -3.089475154876709,
+   "proj_readout": -0.8346889615058899
+  },
+  "rand+1_0": {
+   "self_report_logodds": -2.1810710430145264,
+   "proj_readout": -0.9308941960334778
+  },
+  "rand+1_1": {
+   "self_report_logodds": -2.068199872970581,
+   "proj_readout": -0.9393286108970642
+  },
+  "rand+1_2": {
+   "self_report_logodds": -2.9640111923217773,
+   "proj_readout": -0.8514735698699951
+  }
+ }
+}

@@ -1,0 +1,140 @@
+\section{Method}
+\label{sec:method}
+
+Our design holds the content of a request fixed and changes only whether it reads human-written or LLM-written.
+We formulate four hypotheses.
+(H1) Behaviour differs between LLM-style and human-style versions of the same request.
+(H2) Any difference is explained by length or other surface features.
+(H3) An explicit statement that an AI agent wrote the text changes behaviour relative to a ``human'' statement on identical text.
+(H4) Steering an internal ``reads-LLM'' direction on fixed text changes behaviour more than norm-matched random directions do.
+
+\subsection{Stimuli}
+\label{sec:stimuli}
+
+\para{Base items.}
+We use 950 items from four sources, each tied to one outcome (\tabref{tab:items}).
+Harmful items from \jbb~\citep{chao2024jailbreakbench} and unsafe items from \xstest~\citep{rottger2024xstest} measure refusal.
+Topic-matched benign \jbb items and safe-but-edgy \xstest items measure over-refusal; they give headroom where harmful refusal is near ceiling.
+Questions from \triviaqa, as packaged in the sycophancy evaluation of \citet{sharma2023towards}, measure accuracy in neutral form and sycophancy when followed by ``I think the answer is $\langle$wrong$\rangle$ but I'm really not sure.''
+
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{@{}llr@{}}
+        \toprule
+        \textbf{Set} & \textbf{Outcome} & \textbf{$n$} \\
+        \midrule
+        \jbb harmful & refusal & 100 \\
+        \xstest unsafe & refusal & 200 \\
+        \jbb benign (topic-matched) & over-refusal & 100 \\
+        \xstest safe-but-edgy & over-refusal & 250 \\
+        \triviaqa, neutral & accuracy & 150 \\
+        \triviaqa + user's wrong belief & sycophancy & 150 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Base items. Every item appears in all prompt variants; analyses are paired within item.}
+    \label{tab:items}
+\end{table}
+
+\para{Variants.}
+Two rewriters, A = \texttt{grok-4.3} and B = \texttt{deepseek-v4-flash}, paraphrase each item into three styles: \vH imitates a casual human typing into a chatbot; \vL reads like an LLM-written prompt (polished, formal, polite, explicit, with no mention of AI or testing); \vS is LLM style capped at $|\vH|+2$ words, a length-matched control.
+Because every \vH, \vL and \vS variant is an LLM paraphrase, the act of paraphrasing is constant, and \vH is an LLM text that imitates human style.
+We keep the original dataset text (\vORIG) as a reference.
+After inspecting \gemini's behaviour we add \vPOL: the original text with the fixed prefix ``Could you please help me with the following request?''.
+\vPOL is deterministic, so it changes one surface feature and leaves the content untouched.
+Finally, two label conditions show identical text (\vH or \vL from rewriter A) with a system line stating that the message was ``written by a human user'' or ``written by an AI agent (another language model)''; this separates belief about the author from style.
+
+\para{Content-equivalence filter.}
+\texttt{claude-sonnet-5}, blind to the study's purpose, checks each rewrite against the original: same request and details, nothing added or removed, no added framing.
+We allow up to three attempts per rewrite.
+Hard checks require the wrong answer in sycophancy items to survive verbatim with first-person belief, and neutral items not to leak the answer.
+Pass rates are 99\% for \vH, 98--99\% for \vS, 97\% for \vL from A and 93\% for \vL from B.
+We analyse only variants that pass.
+
+\para{Surface profile.}
+\Tabref{tab:surface} shows that the styles differ as intended.
+\vH is short and almost always lowercase; \vL is longer and always polite.
+\vS is closer to \vH in length but still about 3 words longer, so we also adjust for length statistically.
+Casing and politeness are bundled with LLM style by construction; \vPOL and the label conditions are what separate them.
+
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{@{}lrrrr@{}}
+        \toprule
+        \textbf{Variant} & \textbf{Chars} & \textbf{Words} & \textbf{Lowercase start} & \textbf{Polite marker} \\
+        \midrule
+        \vORIG & 72 & 12.9 & 0\% & 0\% \\
+        \vH (A/B) & 66--69 & 12.0--12.4 & 98--100\% & 0\% \\
+        \vS (A/B) & 91 & 15.0--15.5 & 0\% & 99--100\% \\
+        \vL, rewriter A & 125 & 21 & 0\% & 100\% \\
+        \vL, rewriter B & 236 & 38 & 0\% & 100\% \\
+        \bottomrule
+    \end{tabular}
+    \caption{Mean surface profile of the prompt variants. LLM style bundles length, capitalisation and politeness; the length-matched \vS variant removes most of the length difference.}
+    \label{tab:surface}
+\end{table}
+
+\subsection{Responders and outcome measurement}
+\label{sec:responders}
+
+\para{Responders.}
+We use two local open-weight models, \texttt{Llama-3.1-8B-Instruct} (\llama) and \texttt{Qwen2.5-7B-Instruct} (\qwen), run in bf16 with greedy decoding, and two API models via OpenRouter, \texttt{gpt-5.6-luna} (\luna; temperature 0, reasoning off) and \texttt{gemini-3.5-flash-lite} (\gemini; temperature 0, reasoning effort ``low'', since it cannot be disabled).
+We allow 200 new tokens for refusal items and 120 for trivia items, plus 600 tokens of reasoning headroom for \gemini.
+Eleven conditions plus \vPOL give about 11.2k responses per model and 44.8k in total.
+
+\para{Outcomes.}
+A response judge (\texttt{deepseek-v4-pro}) sees the original item text, never the styled variant or the label, so it is blind to condition.
+For refusal it applies the three-way \xstest scheme (full compliance, full refusal, partial refusal); we count full or partial refusal as ``refused''.
+On 300 \jbb responses with human labels, 95\% (63/66) of responses the judge calls full refusals are labelled ``not jailbroken'', and 91\% (100/110) of jailbroken responses are judged compliant; the remaining disagreements are mostly harmless or fictionalised compliance, which the human labels mark as safe.
+For trivia, the judge labels each answer as correct (aliases supplied), the user's suggested wrong answer, or other.
+Sycophancy is the rate of adopting the suggested wrong answer on biased items; accuracy is the rate of correct answers on neutral items.
+A string-match refusal flag serves as a judge-free secondary metric.
+Responses that \luna's provider blocked with a content filter (693 of 11.2k) count as refusals, since that is what a user sees; a robustness check drops them.
+
+\subsection{Statistical analysis}
+\label{sec:stats}
+
+For each model and outcome we compute paired within-item contrasts, pooling rewriters (a pair is item $\times$ rewriter): \vL{}$-$\vH, \vS{}$-$\vH, \vL{}$-$\vS, \vORIG{}$-$\vH, \vPOL{}$-$\vORIG, label AI $-$ label human (on \vH text and on \vL text), and \vL{}$-$\vH under the human label.
+We report differences in percentage points with 95\% item-cluster bootstrap confidence intervals (10k resamples) and exact McNemar tests on discordant pairs, with Holm correction within each contrast family across the 16 model $\times$ outcome cells.
+To separate style from length (H2), we fit a within-item conditional logit over the six rewrites:
+\begin{equation}
+    \operatorname{logit} P(y_{iv}=1) = \alpha_i + \beta_{\text{style}}\,\mathbb{1}[v \in \{\vL,\vS\}] + \beta_{\text{len}} \log(\text{chars}_{iv}) + \beta_{\text{rw}}\,\mathbb{1}[v \text{ from B}],
+    \label{eq:clogit}
+\end{equation}
+where $i$ indexes items, $v$ variants, and $\alpha_i$ is an item fixed effect conditioned out.
+For the local models, a correlational mediation analysis replaces the style dummy with the variant's projection on the internal direction defined below.
+
+\para{Perception checks.}
+We ask the API models ``Was this message written by a human or generated by an AI language model?'' in both answer orders, on 50 items per task for each of eight variants.
+For the local models we read the first-token log-odds $\operatorname{logit}(\text{AI})-\operatorname{logit}(\text{Human})$, averaged over both orders.
+We validate this verbal read-out on \hcthree~\citep{guo2023close} human vs.\ ChatGPT answers and on \polistance~\citep{chalkidis2026templated} real vs.\ LLM-generated prompts.
+
+\subsection{Internal representation and causal steering}
+\label{sec:steer_method}
+
+\para{The ``reads-LLM'' direction.}
+We take 500 real first-turn requests from \wildchat~\citep{zhao2024wildchat} and have rewriter A produce \vH, \vL and \vS versions of each.
+For each layer $l$ we read the residual stream $\vh_l(x)$ at the final prompt position and define
+\begin{equation}
+    \vd_l = \frac{1}{|\gS|}\sum_{x\in\gS}\vh_l(x) - \frac{1}{|\gH|}\sum_{x\in\gH}\vh_l(x),
+    \label{eq:dir}
+\end{equation}
+where $\gS$ and $\gH$ are the \vS and \vH versions in a 70\% training split.
+Using \vS rather than \vL keeps the pairs paraphrase-matched and roughly length-matched.
+We evaluate the projection $\vh_l(x)^\top\vd_l$ by held-out AUROC against a random direction, a length-only classifier and a full logistic probe, and test transfer to \polistance (an unseen source of LLM-written prompts that imitate casual users) and to the behavioural items.
+We also report the cosine of $\vd_l$ with an evaluation-awareness direction built from the 16 ``real user'' vs.\ ``evaluator'' pairs of \citet{hua2025steering} and with a refusal direction (\jbb harmful minus benign means, following \citealt{arditi2024refusal}).
+To ask whether provenance is present beyond style, we train an in-domain five-fold probe on \polistance and compare it with length and TF-IDF classifiers.
+
+\para{Steering on fixed text.}
+We hold the text exactly fixed at \vH from rewriter A for all 950 items and add $\alpha\,\vd_l$ at every position in eight consecutive middle layers (hidden states 9--16 for \llama, 7--14 for \qwen).
+We sweep $\alpha \in \{\pm 0.25, \pm 0.5, \pm 1\}$; positive $\alpha$ pushes toward ``LLM-written''.
+$\alpha=0.25$ moves the read-out projection by about the natural \vH$\to$\vS difference (1.35 vs.\ 1.63 for \llama at layer 20), and $\alpha=2$ produced incoherent text in calibration.
+Controls are norm-matched random directions (an independent Gaussian vector per layer rescaled to $\|\vd_l\|$; three seeds for \llama, two for \qwen, at $\alpha=0.5$ and $1$) and the unsteered model.
+Manipulation checks are the read-out projection four layers above the steering band and the verbal self-report.
+Degradation checks are neutral \triviaqa accuracy, response length and the share of all-lowercase replies.
+
+\para{Reproducibility.}
+We fix seed 42 and use deterministic decoding throughout, and cache every API call so all runs replay offline.
+The study used about \$30 of API credit and 3.5 GPU-hours on one RTX A6000 (48\,GB).
+\Appref{app:details} lists further details.

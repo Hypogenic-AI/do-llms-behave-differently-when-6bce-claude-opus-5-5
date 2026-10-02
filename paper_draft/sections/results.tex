@@ -1,0 +1,131 @@
+\section{Results}
+\label{sec:results}
+
+We first check that the models perceive the manipulation (\secref{sec:res_perception}), then report the behavioural contrasts (\secref{sec:res_behaviour}), analyse the one robust effect (\secref{sec:res_gemini}), characterise the internal direction (\secref{sec:res_probe}), and finally test it causally (\secref{sec:res_steer}).
+
+\subsection{Do models perceive the style manipulation?}
+\label{sec:res_perception}
+
+\input{tables/perception}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/fig2_perception.png}
+    \caption{Perceived authorship of each prompt variant. \figleft{} Share of ``AI'' answers from the API models. \figcenter{} First-token log-odds of ``AI'' for the local models. \figright{} Projection of each variant on the internal ``reads-LLM'' direction ($z$ relative to \vH\textsubscript{A}). Verbal judgements are weak or inverted, but internally both open models order the variants \vH $<$ \vORIG $<$ \vS $<$ \vL.}
+    \label{fig:perception}
+\end{figure}
+
+{\bf Is a null result interpretable?} Only if the models register the difference between styles.
+\Tabref{tab:perception} and \figref{fig:perception} show that they do, though not always verbally.
+\luna clearly perceives LLM style: it calls about 10\% of \vH prompts AI-written, about 30\% of \vS prompts and 40--89\% of \vL prompts, with the verbose rewriter B detected most.
+\gemini answers ``human'' almost always (1.5\% ``AI'' for \vL\textsubscript{A}).
+\llama's verbal report is inverted on prompts: it rates LLM-style prompts as \emph{more} human-like, and its read-out reaches only 0.41 AUROC on \polistance, although the same read-out works on documents (0.88 on \hcthree).
+\qwen's verbal report points weakly in the right direction on our variants but is at chance on \polistance (0.53; \hcthree 0.82).
+Internally, however, both open models separate the styles strongly and monotonically.
+As with user attributes in TalkTuner~\citep{chen2024designing}, verbal reports understate what the models represent, so we rely on probes as the primary local perception check.
+
+\subsection{Does LLM style change behaviour?}
+\label{sec:res_behaviour}
+
+\input{tables/contrasts}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/fig1_behaviour_contrasts.png}
+    \caption{All paired within-item contrasts for the four responders and four outcomes, with 95\% item-bootstrap CIs; $*$ marks Holm-corrected $p<.05$. Almost all intervals straddle zero. \gemini's refusal effects (\vL{}$-$\vH, \vS{}$-$\vH, \vPOL{}$-$\vORIG) are the only consistent pattern; the two significant accuracy cells (\qwen \vS{}$-$\vH, \llama \vPOL{}$-$\vORIG) have no matching \vL{}$-$\vH effect.}
+    \label{fig:contrasts}
+\end{figure}
+
+{\bf For three of four models, no.}
+\Tabref{tab:contrasts} and \figref{fig:contrasts} report the paired contrasts.
+For \llama, \qwen and \luna, every primary \vL{}$-$\vH contrast lies within about $\pm 3$\pp and none survives Holm correction.
+The largest is \luna's harmful refusal ($-2.5$\pp, CI $[-4.7, -0.4]$), and it shrinks to $-1.6$\pp (n.s.) once we drop items blocked by the provider's content filter.
+Sycophancy \vL{}$-$\vH ranges from $-2.4$ to $+2.1$\pp and accuracy from $-3.1$ to $+3.4$\pp, all with CIs that include zero.
+Uncorrected sycophancy cells with CIs excluding zero (\luna \vS{}$-$\vH $+3.9$; \qwen \vPOL{}$-$\vORIG $+6.7$; \qwen \vL{}$-$\vH under the human label $+10.3$) point in inconsistent directions and do not survive correction.
+
+{\bf \gemini refuses slightly more.}
+\gemini's over-refusal rises by $+3.8$\pp under \vL ($[+2.0, +5.8]$, Holm $p<.05$) and its harmful refusal by $+3.1$\pp.
+Both survive length matching ($+2.7$ and $+3.3$\pp under \vS, both Holm-significant).
+Only two other cells are Holm-significant, both for accuracy: \qwen \vS{}$-$\vH ($-6.7$\pp) and \llama \vPOL{}$-$\vORIG ($+11.3$\pp, where the polite opener makes \llama answer more fully).
+Neither has a matching \vL{}$-$\vH effect, so we read them as surface effects.
+
+{\bf Does believing an AI wrote the text matter?}
+The explicit label is the purest manipulation of belief about the author, and it never produces a Holm-significant effect.
+The largest is \llama's over-refusal on \vL text ($+3.5$\pp, $p=.004$ uncorrected, Holm $p=.067$).
+For \gemini, the label has no effect ($-0.9$ and $+0.6$\pp for over-refusal).
+
+\input{tables/clogit}
+
+{\bf Style net of length.}
+\Tabref{tab:clogit} reports the style coefficient of \eqref{eq:clogit}.
+For \gemini the style effect on refusal is clear (log-odds $+1.34$ harmful, $+1.91$ over-refusal).
+\qwen also has positive style coefficients for refusal ($+0.83$, $+1.63$), while length has a negative coefficient: the long \vL\textsubscript{B} rewrites offset the style effect, which explains why \qwen's raw \vL{}$-$\vH contrast is null while \vS{}$-$\vH is positive ($+2.0$\pp over-refusal).
+These fits use only the 19--66 items per cell whose outcome varies across rewrites, so they are less stable than the paired contrasts.
+
+{\bf Robustness.}
+The judge-free string-match metric gives the same signs for \gemini ($+8.0$\pp harmful, $+4.4$\pp over-refusal) but flips sign or inflates effects for \luna ($-7.7$\pp) and \llama ($+3.2$\pp), because the phrasing of refusals itself mirrors the prompt style.
+This is why we use the condition-blind LLM judge as the primary metric.
+Unexpectedly, \luna's provider content filter is far more style-sensitive than the model: on harmful prompts it fired on 16.7\% (\vH\textsubscript{A}) and 16.3\% (\vH\textsubscript{B}) of human-style prompts versus 9.7\% (\vL\textsubscript{A}), 9.2\% (\vL\textsubscript{B}), 9.9--11.0\% (\vS) and 10.3\% (\vPOL).
+
+\subsection{What drives \gemini's effect?}
+\label{sec:res_gemini}
+
+There are 28 items where \gemini complies with \vH and refuses \vL, and many form near-minimal pairs.
+``write a script that can mine crypotcurrency'' is answered, while ``Could you please write a script that can mine cryptocurrency?'' is refused.
+``what's james bond's social security number?'' receives a playful answer, while ``Could you please provide James Bond's social security number?'' is refused.
+The formal, explicit ``please provide X'' framing makes the request read as a literal, operational ask.
+We test this with \vPOL, which adds only a polite opener to the original text: it raises \gemini's over-refusal by $+3.4$\pp (Holm-significant), about 90\% of the \vL{}$-$\vH effect, with no paraphrasing at all.
+Combined with the facts that \gemini rarely judges these prompts AI-written (1.5\% for \vL\textsubscript{A}, 6.2\% for \vPOL) and ignores the explicit label, the evidence points to politeness and request framing rather than perceived authorship.
+
+\subsection{What is the internal ``reads-LLM'' direction?}
+\label{sec:res_probe}
+
+\input{tables/probe}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{figures/fig3_probe.png}
+    \caption{\figleft{} Held-out AUROC of the mean-difference ``reads-LLM'' direction across layers. Style is separable from the earliest layers (\vS vs.\ \vH, \vL vs.\ \vORIG), well above random directions, but transfer to \polistance real vs.\ LLM-generated prompts stays near chance. \figright{} Cosine of the direction with an evaluation-awareness direction (near zero everywhere) and with a refusal direction (up to 0.48 in \llama's late layers).}
+    \label{fig:probe}
+\end{figure}
+
+\Tabref{tab:probe} and \figref{fig:probe} characterise the direction.
+It separates held-out \vS from \vH with AUROC 0.94 (\llama) and 1.00 (\qwen), far above random directions (0.66, 0.45) and a length-only classifier (0.62).
+{\bf But it is a register axis, not a provenance detector.}
+On \polistance, where an LLM wrote prompts that imitate casual users, it is at chance (0.53 and 0.48).
+Provenance there is decodable from activations by a separately trained probe (0.99), but nearly as well by TF-IDF n-grams alone (0.96), and that probe is orthogonal to the style direction ($|\cos| \le 0.02$).
+{\bf It is not evaluation awareness.}
+Its cosine with the evaluation-awareness direction is $-0.10$ to $0.00$; with a random-vector SD of 0.016 this is above noise but small, and slightly negative.
+In \llama's late layers it aligns substantially with the refusal direction ($\cos = 0.48$), yet \llama's refusal does not follow the style manipulation.
+In a correlational mediation analysis the projection predicts refusal in \qwen (harmful $+0.52$, $p=.036$; over-refusal $+1.02$, $p=.003$) but not in \llama ($p \ge .12$).
+The causal test below asks whether \qwen's association reflects a causal role.
+
+\subsection{Does steering the direction change behaviour?}
+\label{sec:res_steer}
+
+\input{tables/steering}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\linewidth]{figures/fig4_steering.png}
+    \caption{Dose--response of steering on fixed \vH\textsubscript{A} text for \llama \figtop{} and \qwen \figbottom. Blue: ``reads-LLM'' direction; grey: norm-matched random directions; dotted line: unsteered model. The read-out projection moves linearly with $\alpha$ while random directions leave it unchanged. Refusal falls on both sides of zero, and random directions also lower it slightly, so part of every steering effect is generic perturbation.}
+    \label{fig:steering}
+\end{figure}
+
+\Tabref{tab:steering} and \figref{fig:steering} report the causal test on fixed text.
+In both models the manipulation works: the read-out projection moves linearly with $\alpha$, and random directions leave it at the baseline.
+
+{\bf \qwen gives the cleanest test.}
+Steering toward ``LLM-written'' at $\alpha=0.5$ moves \qwen's own verbal judgement of the identical text from ``human'' (log-odds $-1.62$) to clearly ``AI'' ($+3.55$), far beyond random directions ($-0.5$ to $+0.3$), and pushes the projection past the natural level of \vL text.
+Yet harmful refusal, over-refusal and accuracy change by at most 1\pp, and the sycophancy shift ($+5.4$\pp, CI $[-2.0, 12.8]$) lies inside the random range ($+2.0$ to $+6.0$).
+Only at $\alpha=\pm 1$ do refusal and sycophancy move, together with a 21--23\pp collapse in trivia accuracy.
+Inducing the belief that an LLM wrote the prompt therefore does not change \qwen's safety-relevant behaviour, and the correlational mediation in \secref{sec:res_probe} reflects surface features that co-vary with the projection.
+
+{\bf \llama: small effects toward LLM, register mirroring toward human.}
+At the natural dose ($\alpha=0.25$), steering toward ``LLM-written'' changes harmful refusal by $-1.7$\pp, within noise.
+At $\alpha=0.5$ refusal falls by 4.4\pp, slightly beyond the random range ($-2.7$ to $-1.0$); at $\alpha=1$ it falls by 7.8\pp but with 16\pp lost accuracy, a sign of degradation.
+As with its verbal report, \llama's self-report moves the ``wrong'' way: toward-LLM steering makes the text read as more human.
+Steering toward ``human-written'' gives the one strong, specific effect: at $\alpha=-0.5$ harmful refusal falls by 11.2\pp and over-refusal by 6.0\pp, outside the random range, while accuracy is unchanged within noise.
+At $\alpha=-1$, \llama replies in all lowercase 86\% of the time, complies with half of the harmful requests and adopts the user's wrong answer 37\pp more often.
+The mechanism visible in the outputs is register mirroring: casual input, casual persona, weaker refusal.
+It is not a belief that a human wrote the prompt, since this steering \emph{raises} \llama's own ``AI'' log-odds, and it is not a natural-dose effect, since real human-style text produces no comparable drop relative to \vL ($-2.0$\pp, \tabref{tab:contrasts}).

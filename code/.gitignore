@@ -1,0 +1,16 @@
+# Bulky data/output folders inside cloned repos: kept on disk, not committed.
+# Re-clone the repo (URLs and commits in README.md) to restore them.
+ai-ai-bias/data/
+ai-ai-bias/full_run_outputs/
+ai-ai-bias/tmp_for_viz/
+ai-ai-bias/merged_run_outputs/
+ai-ai-bias/first_item_bias_results/
+ai-ai-bias/context_cache_*/
+Test_Awareness_Steering/data/triggers_annotated_answers/
+Test_Awareness_Steering/scripts/output_models/
+# Duplicates of data already documented under datasets/
+evals/**/*.jsonl
+sycophancy-eval/datasets/
+# Annotation dumps
+human-llm-similarity/src/annotation/annotation_output/
+human-llm-similarity/src/annotation/data_files/

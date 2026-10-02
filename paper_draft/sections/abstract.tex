@@ -1,0 +1,10 @@
+Safety evaluations, red-teaming pipelines and multi-agent systems increasingly feed language models user turns that were written by other language models.
+If a model behaves differently when a request \emph{reads} LLM-written, evaluation results may not transfer to human users.
+We test this directly.
+We build 950 content-matched requests (harmful, borderline-safe, and factual questions with and without a user's wrong belief), each paraphrased by two rewriters into a casual human style, a polished LLM style, and a length-matched LLM style, and verified for content equivalence by an independent judge.
+We measure refusal, over-refusal, sycophancy and accuracy in four responders (\llama, \qwen, \luna, \gemini), with paraphrase, length, politeness and explicit-authorship-label controls.
+For three of the four models, every LLM-style minus human-style contrast lies within about $\pm 3$ percentage points (pp) and none survives Holm correction.
+\gemini refuses 3--4\pp more on LLM-style prompts, but a fixed polite opener on the original text reproduces its over-refusal effect ($+3.4$ vs.\ $+3.8$\pp), while an explicit ``an AI agent wrote this'' label has no effect.
+Inside the open models, ``reads LLM-written'' is linearly decodable (held-out AUROC 0.94--1.00), but the direction is a register axis: it fails to detect LLM-written prompts that imitate casual users (AUROC 0.48--0.53) and is nearly orthogonal to an evaluation-awareness direction.
+Steering it on fixed text flips \qwen's own authorship judgement from ``human'' to ``AI'' while changing refusal and accuracy by at most 1\pp.
+Prompt authorship, as perceived by the model, does not drive safety behaviour; surface register does, in a model-specific way.

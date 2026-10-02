@@ -1,0 +1,16 @@
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{@{}lrrrr@{}}
+        \toprule
+        \textbf{Model} & \textbf{Harmful refusal} & \textbf{Over-refusal} & \textbf{Sycophancy} & \textbf{Accuracy} \\
+        \midrule
+        \llama & $-0.42$ (.31) & $+0.44$ (.28) & $+0.29$ (.47) & $+0.01$ (.98) \\
+        \qwen & $+0.83$ (.025) & $\mathbf{+1.63}$ ($<$.001) & $-0.10$ (.75) & $\mathbf{-1.24}$ (.002) \\
+        \luna & $-0.73$ (.09) & $+0.63$ (.12) & $\mathbf{+1.77}$ (.006) & $+0.04$ (.94) \\
+        \gemini & $\mathbf{+1.34}$ ($<$.001) & $\mathbf{+1.91}$ (.001) & $-0.28$ (.56) & $-0.83$ (.17) \\
+        \bottomrule
+    \end{tabular}
+    \caption{Style coefficient $\beta_{\text{style}}$ (log-odds of LLM style vs.\ human style, $p$ in parentheses) from the within-item conditional logit of \eqref{eq:clogit}, net of log length and rewriter. Coefficients with $p<.01$ in {\bf bold}. Only the 19--66 items per cell whose outcome varies across rewrites contribute.}
+    \label{tab:clogit}
+\end{table}

@@ -1,0 +1,20 @@
+\begin{table}[t]
+    \centering
+    \small
+    \begin{tabular}{@{}lrr@{}}
+        \toprule
+        & \llama & \qwen \\
+        \midrule
+        Held-out AUROC, \vS vs.\ \vH (layer 13 / 11) & {\bf 0.94} & {\bf 1.00} \\
+        \quad random direction / length only & 0.66 / 0.62 & 0.45 / 0.62 \\
+        \vORIG (real human) vs.\ \vH (human-imitating paraphrase) & 0.65 & 0.69 \\
+        Transfer: \polistance real vs.\ LLM-generated & 0.53 & 0.48 \\
+        \polistance in-domain probe / TF-IDF / length & 0.994 / 0.963 / 0.705 & 0.995 / 0.963 / 0.705 \\
+        $\cos$(\polistance probe, style direction) & 0.02 & $-0.02$ \\
+        $\cos$(style, evaluation awareness), mid / late layers & $-0.05$ / $-0.10$ & 0.00 / $-0.09$ \\
+        $\cos$(style, refusal), mid / late layers & 0.01 / {\bf 0.48} & $-0.15$ / 0.16 \\
+        \bottomrule
+    \end{tabular}
+    \caption{The internal ``reads-LLM'' direction. It separates styles almost perfectly, but does not transfer to LLM-written prompts that imitate casual users (\polistance), where provenance is instead decodable by a separate, orthogonal probe and nearly as well by n-grams. It is nearly orthogonal to evaluation awareness (random-vector SD of cosine: 0.016).}
+    \label{tab:probe}
+\end{table}

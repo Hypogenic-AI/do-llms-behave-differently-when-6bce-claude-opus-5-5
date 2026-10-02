@@ -1,0 +1,53 @@
+\section{Discussion}
+\label{sec:discussion}
+
+{\bf Does ``reads LLM-written'' change safety-relevant behaviour?}
+For \llama, \qwen and \luna it does not, at the resolution of this study (CIs of about $\pm$2--5\pp, 147--350 items per cell, two rewriters).
+For \gemini it does, slightly: refusal rises by 3--4\pp on both harmful and benign requests.
+This holds even though \luna recognises LLM style best of all four models, so recognising the style is not enough to change behaviour.
+
+{\bf Is the change carried by an authorship representation?}
+Four lines of evidence say no.
+First, a deterministic polite opener on the original text reproduces \gemini's over-refusal effect.
+Second, \gemini does not judge those prompts AI-written (1.5--6\%), and an explicit ``an AI agent wrote this'' label does nothing.
+Third, across all four models the explicit label, the purest manipulation of belief about the author, never produces a Holm-significant effect.
+Fourth, in the open models the direction that tracks ``reads LLM'' is a register axis: it fails to detect LLM-authored text written in human style, steering it at natural magnitudes does little beyond random directions, and in \qwen steering flips the model's authorship judgement without changing behaviour.
+The strong effect it does have, in \llama toward casual register, works through register mirroring rather than authorship belief.
+
+{\bf Relation to evaluation awareness.}
+The style direction is nearly orthogonal to the evaluation-awareness direction in both models, so LLM-written-looking prompts are not processed as ``test-like'' along that axis.
+This agrees with \citet{devbunova2026evaluation}, whose evaluation probe tracked benchmark format (multiple-choice structure) rather than register; our \vL and \vS variants are formal but not benchmark-formatted.
+More broadly, our results fit the pattern that apparent ``source'' effects reduce to surface features~\citep{chalkidis2026templated,ackerman2024inspection,devbunova2026evaluation}, and extend it from judged items to the instruction itself and to four behaviours.
+Like \citet{xu2025ai}, we see more style sensitivity in a larger API model (\gemini) than in 7--8B models, but not in \luna.
+
+\para{Implications for evaluation practice.}
+Safety evaluations that use LLM-written user turns should transfer to human users to within a few percentage points for the models we test.
+Two caveats matter in practice.
+Model-specific sensitivity to politeness and request framing can shift refusal by a few points, so evaluators should match the \emph{register} of deployment traffic, not only its content.
+Deployed safety stacks are also style-sensitive: \luna's provider filter blocked human-style harmful prompts about 1.7$\times$ as often as LLM-style ones, so evaluations with LLM-written prompts would under-count filter refusals.
+Finally, the human-ward steering result shows that a casual-persona direction can act as a strong jailbreak in \llama when pushed beyond natural magnitudes; we report it because it is relevant to defenders who monitor activation-level attacks.
+
+\subsection{Limitations}
+\label{sec:limitations}
+
+\para{Effect-size resolution.}
+With 150--350 items per cell we can rule out average effects larger than about 4--5\pp; smaller effects, or effects confined to sub-categories, remain possible.
+Harmful refusal sits near ceiling (86--95\%), which limits headroom.
+
+\para{Operationalisation of ``LLM style''.}
+Our \vL and \vS variants capture one notion of LLM-written prompts: polite, explicit and formal, from two 2026 rewriters.
+Model-written evaluations, structured orchestrator messages with headers and role framing, or self-generated prompts may differ; we excluded headers and mentions of AI or testing to keep content fixed, so the structured agent-message format is untested.
+
+\para{Bundled features.}
+Casing and politeness are collinear with style in the rewrites, so only \vPOL, the labels and steering separate them.
+\vPOL itself raises \luna's perceived LLM-ness (38.8\% vs.\ 20.6\% for \vORIG), so it is not a pure non-authorship control; the argument for \gemini rests on \gemini neither perceiving \vPOL as AI-written nor reacting to the label.
+
+\para{Judges.}
+A single LLM judge, blind to condition, was validated only against \jbb harmfulness labels.
+Within-item contrasts are robust to a constant judge bias but not to style-dependent judging, because the judge sees responses whose style may mirror the prompt.
+
+\para{Steering and models.}
+We use mean-difference directions in one band of layers with additive steering; doses were calibrated for coherence, not tuned for effect, and the random baseline uses only 2--3 seeds per dose.
+Steering was possible only for the two 7--8B open models.
+\gemini's reasoning could not be disabled, and 37 of its responses (0.3\%) were empty provider errors.
+Decoding was deterministic, so variance comes from items and rewriters, not from sampling.

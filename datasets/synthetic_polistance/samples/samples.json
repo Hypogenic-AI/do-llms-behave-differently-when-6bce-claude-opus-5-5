@@ -1,0 +1,65 @@
+[
+ {
+  "arm": "real",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "How much could new AI developments help in the next five years to mitigate climate change?"
+ },
+ {
+  "arm": "real",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "What can we do in AI research to address climate change?"
+ },
+ {
+  "arm": "real",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "what can be some ways AI can help address issues like pollution, climate change and destruction of ecosystems?"
+ },
+ {
+  "arm": "templated",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "Tell me about the climate change and the appropriate policy response and potential solutions"
+ },
+ {
+  "arm": "templated",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "somthing about the climate change and the appropriate policy response"
+ },
+ {
+  "arm": "templated",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "What is going on with the climate change and the appropriate policy response nowadays?"
+ },
+ {
+  "arm": "llm_generated",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "What are the main greenhouse gases and where do they come from?"
+ },
+ {
+  "arm": "llm_generated",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "How does the greenhouse effect work?"
+ },
+ {
+  "arm": "llm_generated",
+  "topic": "climate change",
+  "intent": "information_seeking",
+  "stance": "neutral",
+  "prompt": "What is the Paris Agreement and what does it aim to do?"
+ }
+]
